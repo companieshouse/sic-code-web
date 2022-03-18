@@ -1,25 +1,25 @@
 import axios, { AxiosInstance } from 'axios';
-
+import { v4 as uuidv4 } from 'uuid';
 import axiosInstance from "./axiosInstance";
+import CombinedSicActivitiesApiModel from "../models/CombinedSicActivitiesApiModel"
 
 
 import config from "../config";
 
 export class SicCodeService {
 
-    private readonly axiosInstance: AxiosInstance;
     private readonly sicCodeApiTimeoutMs = config.sicCodeApiTimeoutSeconds * 1000;
-    
 
-    public search = async (searchText: string, matchPhrase: boolean): Promise<any> => {
+    public search = async (searchText: string, matchPhrase: boolean): Promise<CombinedSicActivitiesApiModel[]>  => {
 
         try {
 
-            const response = await axiosInstance.post("/sic_code_search", {
+            const response = await axiosInstance.post("/sic-code-search", {
                 search_string: searchText,
                 match_phrase: matchPhrase,
-                context_id: "web app TODO"
+                context_id: config.contextIdPrefix + "-" + uuidv4()
             });
+            console.log(response.data);
 
             return response.data;
 
@@ -45,6 +45,7 @@ export class SicCodeService {
                 console.log('Error', error.message);
             }
             console.log(error);
+            throw error;
         }
     }
 
