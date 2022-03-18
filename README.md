@@ -26,11 +26,6 @@ This Node.js application is based on the [Node Web Starter](https://github.com/c
 
 ### Quick start
 
-Populate the database:
-
-1. Run docker with a Mongo container running (making sure that you have the correct setting for the environmental variable MONGO_DOCKER_NAME)
-2. Run the script `./scripts/refresh-mongo-db.sh`
-
 Install the dependencies:
 
   `make init`
@@ -47,8 +42,8 @@ The following is a list of environment variables for the service to run:
 
 Name                                        | Description                                                            | Example Value
 ------------------------------------------- | ---------------------------------------------------------------------- | ------------------------
-SIC_CODE_MONGO_URL                          | Base URL of the Mongo Database                                         | `mongodb://chs.local:27017`
-SIC_CODE_DATABASE                           | Mongo Database name                                                    | `sic_code`
+INTERNAL_API_URL                            | Base URL to `sic-code-api`                                             | `http://internalapi.`
+CHS_INTERNAL_API_KEY                        | API Key for calling the `sic-code-api`                                 |
 SIC_CODE_WEB_PORT                           | Application port number                                                | 3000 (default)
 
 ### Prerequisites
