@@ -36,6 +36,8 @@ And then start the application:
 
 Then go to [http://localhost:3000](http://localhost:3000).
 
+If running the node application behind a **proxy server** and using an Sic Code API in AWS - make sure that you do NOT have anything in your PROXY environmental variables
+
 ### Environment Variables
 
 The following is a list of environment variables for the service to run:
@@ -44,6 +46,7 @@ Name                                        | Description                       
 ------------------------------------------- | ---------------------------------------------------------------------- | ------------------------
 INTERNAL_API_URL                            | Base URL to `sic-code-api`                                             | `http://internalapi.`
 CHS_INTERNAL_API_KEY                        | API Key for calling the `sic-code-api`                                 |
+SIC_CODE_API_TIMEOUT_SECONDS                | API call timeout in seconds                                            | 10 (default)
 SIC_CODE_WEB_PORT                           | Application port number                                                | 3000 (default)
 
 ### Prerequisites
