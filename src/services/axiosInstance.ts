@@ -8,7 +8,7 @@ const requiredHeaders = {
 const axiosInstance = axios.create({
     baseURL: `${config.internalApiBaseUrl}/internal`,
     headers: requiredHeaders,
-    timeout: config.sicCodeApiTimeoutSeconds * 1000
+    timeout: config.sicCodeApiTimeoutMilliseconds
 });
 
 export default axiosInstance;

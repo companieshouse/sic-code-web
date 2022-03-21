@@ -1,10 +1,10 @@
 type ApplicationConfiguration = Readonly<{
-    env:                      string;
-    internalApiBaseUrl:       string;
-    internalApiKey:           string;
-    contextIdPrefix:          string;
-    sicCodeApiTimeoutSeconds: number;  
-    port:                     number;
+    env:                           string;
+    internalApiBaseUrl:            string;
+    internalApiKey:                string;
+    contextIdPrefix:               string;
+    sicCodeApiTimeoutMilliseconds: number;  
+    port:                          number;
 }>
 
 export default ApplicationConfiguration;
