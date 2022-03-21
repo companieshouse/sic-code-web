@@ -1,6 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import axiosInstance from "./axiosInstance";
+import { loggerInstance } from '../utils/Logger';
 import CombinedSicActivitiesApiModel from "../models/CombinedSicActivitiesApiModel"
 
 
@@ -8,16 +9,21 @@ import config from "../config";
 
 export class SicCodeService {
 
-    private readonly sicCodeApiTimeoutMs = config.sicCodeApiTimeoutSeconds * 1000;
+    private readonly sicCodeApiTimeoutMs = config.sicCodeApiTimeoutMilliseconds * 1000;
 
-    public search = async (searchText: string, matchPhrase: boolean): Promise<CombinedSicActivitiesApiModel[]>  => {
+    public search = async (searchString: string, matchPhrase: boolean): Promise<CombinedSicActivitiesApiModel[]>  => {
 
         try {
 
-            const response = await axiosInstance.post("/sic-code-search", {
-                search_string: searchText,
+            const context_id = config.contextIdPrefix + "-" + uuidv4();
+            const url = `${config.internalApiBaseUrl}/internal/sic-code-search`;
+
+            loggerInstance().info(`context_id=${context_id} {${SicCodeService.name} - Making a POST request to ${url} with search string [${searchString}] and match phrase [${matchPhrase}]`);
+
+            const response = await axiosInstance.post(url, {
+                search_string: searchString,
                 match_phrase: matchPhrase,
-                context_id: config.contextIdPrefix + "-" + uuidv4()
+                context_id: context_id
             });
             console.log(response.data);
 
