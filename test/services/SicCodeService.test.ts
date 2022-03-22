@@ -30,7 +30,7 @@ describe('SicCodeService', () => {
         });
     });
     describe("when API call fails", () => {
-        it("should re-throw the error", async () => {
+        it("should re-throw the error with the correct status code", async () => {
           // given
           mockedAxios.post.mockReturnValue(Promise.reject({
             response: {status: StatusCodes.SERVICE_UNAVAILABLE}
