@@ -1,13 +1,22 @@
-import axios from 'axios';
+import axios, { AxiosInstance } from 'axios';
 import { v4 as uuidv4 } from 'uuid';
-import axiosInstance from "./axiosInstance";
 import { loggerInstance } from '../utils/Logger';
 import CombinedSicActivitiesApiModel from "../models/CombinedSicActivitiesApiModel"
-
-
 import config from "../config";
 
 export class SicCodeService {
+
+    private readonly axiosInstance: AxiosInstance;
+
+    constructor() {
+        const requiredHeaders = {
+            Authorization: config.internalApiKey
+        };
+        this.axiosInstance =  axios.create({
+            headers: requiredHeaders,
+            timeout: config.sicCodeApiTimeoutMilliseconds
+        });
+    }
 
     public search = async (searchString: string, matchPhrase: boolean): Promise<CombinedSicActivitiesApiModel[]>  => {
 
@@ -18,7 +27,7 @@ export class SicCodeService {
 
             loggerInstance().info(`${logPrefix} Making a POST request to ${url} with search string [${searchString}] and match phrase [${matchPhrase}]`);
 
-            const response = await axiosInstance.post(url, {
+            const response = await this.axiosInstance.post(url, {
                 search_string: searchString,
                 match_phrase: matchPhrase,
                 context_id: contextId
@@ -28,21 +37,8 @@ export class SicCodeService {
             return response.data;
 
         } catch (error) {
-            if (axios.isAxiosError(error)) {
-                if (error.response ) {
-                    loggerInstance().error(`${logPrefix} status code that falls out of the range of 2xx with value of ${error.response.status}`);
-                } else if (error.request) {
-                    loggerInstance().error(`${logPrefix} the request was made but no response was received since ${error}`);
-                } 
-                else {
-                    loggerInstance().error(`${logPrefix} Other Axios error found ${error.message}`);
-                }
-            } else {
-                loggerInstance().error(`${logPrefix} Non Axios error found ${error.message}`);
-            }
-
+            loggerInstance().error(`${logPrefix} Error calling SIC Code API ${error.message}`);
             throw error;
         }
     }
 }
-
