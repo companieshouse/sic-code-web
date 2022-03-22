@@ -1,4 +1,4 @@
-import CombinedSicActivitiesApiModel from "../models/CombinedSicActivitiesApiModel"
+import CombinedSicActivitiesApiModel from "../src/models/CombinedSicActivitiesApiModel"
 
 export function generateTestData(): CombinedSicActivitiesApiModel[] {
     return [
