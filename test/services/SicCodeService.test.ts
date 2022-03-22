@@ -41,6 +41,7 @@ describe('SicCodeService', () => {
           // when
           const sicCodeService = new SicCodeService();
           await sicCodeService.search(searchString, matchPhrase).catch((err) => {
+            // then
             expect(expect(err.response.status).toBe(503));
           });
         });
