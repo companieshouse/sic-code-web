@@ -26,31 +26,23 @@ describe('SicCodeService', () => {
         const result = await sicCodeService.search(searchString, matchPhrase);
     
         // then
-   //     expect(axios.post).toHaveBeenCalledWith(`/internal/sic-code-search`);
         expect(result).toEqual(testData);
         });
     });
-});
-  /*
-    const searchString: string = 'ABC';
-    const matchPhrase: boolean = false;
-  
-  
-    describe('searching sic code', () => {
-  
-    it('should retrieve full suppression', async () => {
-
-        mockedAxios.post.mockReturnValue(Promise.resolve({
-            status: StatusCodes.OK,
-            data: generateTestData()
-        }));
+    describe("when API call fails", () => {
+        it("should re-throw the error", async () => {
+          // given
+          mockedAxios.post.mockReturnValue(Promise.reject({
+            response: {status: StatusCodes.SERVICE_UNAVAILABLE}
+          }));
+          const searchString = 'ABC';
+          const matchPhrase = false;
     
-        const sicCodeService = new SicCodeService();
-    
-        await sicCodeService.search(searchString, matchPhrase).then((response: CombinedSicActivitiesApiModel[]) => {
-            expect(response).toEqual(generateTestData())
+          // when
+          const sicCodeService = new SicCodeService();
+          await sicCodeService.search(searchString, matchPhrase).catch((err) => {
+            expect(expect(err.response.status).toBe(503));
+          });
         });
-    });
-   });
+      });
 });
-*/
