@@ -8,7 +8,11 @@ const mockedAxios = axios as jest.Mocked<typeof axios>;
 mockedAxios.create = jest.fn(() => mockedAxios);
 
 describe("SicCodeService", () => {
-  const sicCodeService = new SicCodeService();
+    
+    let sicCodeService: SicCodeService;
+    beforeEach(() => {
+        sicCodeService = new SicCodeService();
+    });
   describe("when API call is successful", () => {
     it("should return search results list", async () => {
       // given
