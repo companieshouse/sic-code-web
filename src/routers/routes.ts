@@ -1,7 +1,7 @@
-import {Router} from "express";
+import { Router } from "express";
 import { SicCodeService } from "../services/SicCodeService";
 
-import {SicSearchController} from "../controllers/SicSearchController";
+import { SicSearchController } from "../controllers/SicSearchController";
 
 const router = Router();
 

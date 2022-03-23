@@ -2,6 +2,7 @@ import  express from "express";
 import * as nunjucks from "nunjucks";
 import * as path from "path";
 import router from "./routers/routes";
+// needed to add body-parser middleware to parse the POST form fields into a JavaScript object - https://thewebdev.info/2021/07/04/how-to-fix-the-express-js-req-body-undefined-error/
 import bodyParser from "body-parser";
 
 const app = express();
@@ -10,8 +11,6 @@ const app = express();
 app.set("port", process.env.PORT || "3000");
 app.set("dev", process.env.NODE_ENV === "development");
 
-// needed to add body-parser middleware to parse the POST form fields into a JavaScript object - https://thewebdev.info/2021/07/04/how-to-fix-the-express-js-req-body-undefined-error/
-// const bodyParser = require('body-parser')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
