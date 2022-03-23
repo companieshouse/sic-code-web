@@ -9,11 +9,12 @@
     "baseUrl": "./src",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "esModuleInterop": true,
     "strictNullChecks": true
   },
   "include": [
     "src/**/*"
-  ],
+, "test"  ],
   "exclude": [
     "node_modules"
   ]
