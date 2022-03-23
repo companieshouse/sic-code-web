@@ -4,7 +4,7 @@ type ApplicationConfiguration = Readonly<{
     env:                           string;
     internalApiBaseUrl:            string;
     internalApiKey:                string;
-    sicCodeApiTimeoutMilliseconds: number;  
+    sicCodeApiTimeoutMilliseconds: number;
     port:                          number;
 }>
 

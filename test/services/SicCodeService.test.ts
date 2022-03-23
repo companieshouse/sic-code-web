@@ -24,7 +24,6 @@ describe('SicCodeService', () => {
         // when
         const sicCodeService = new SicCodeService();
         const result = await sicCodeService.search(searchString, matchPhrase);
-    
         // then
         expect(result).toEqual(testData);
         });
@@ -37,7 +36,6 @@ describe('SicCodeService', () => {
           }));
           const searchString = 'ABC';
           const matchPhrase = false;
-    
           // when
           const sicCodeService = new SicCodeService();
           await sicCodeService.search(searchString, matchPhrase).catch((err) => {
