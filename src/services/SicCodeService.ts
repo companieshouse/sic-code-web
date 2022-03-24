@@ -17,10 +17,10 @@ export class SicCodeService {
     });
   }
 
-  public search = async (
+  public async search(
     searchString: string,
     matchPhrase: boolean
-  ): Promise<CombinedSicActivitiesApiModel[]> => {
+  ): Promise<CombinedSicActivitiesApiModel[]>  {
     const contextId = config.contextIdPrefix + "-" + uuidv4();
     const logPrefix = `context_id=${contextId} ${SicCodeService.name} -`;
     const url = `${config.internalApiBaseUrl}/internal/sic-code-search`;
