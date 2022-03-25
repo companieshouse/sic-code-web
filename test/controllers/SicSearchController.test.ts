@@ -3,6 +3,7 @@ import { generateTestData } from "../TestData";
 import {
   expectToHaveTitle,
   expectToHaveTableRow,
+  expectToHaveErrorSummaryContaining
 } from "./HtmlPatternAssertions";
 
 import request from "supertest";
@@ -33,7 +34,7 @@ describe("/sic-code-search", () => {
       const pageTitle = "SIC Code Search";
       const response = await request(app).post("/sic-code-search").send({
         search_string: "barley",
-        matchOptions: "and",
+        matchOptions: "or",
       });
       expect(response.statusCode).toBe(200);
       expectToHaveTitle(response.text, pageTitle);
@@ -68,6 +69,21 @@ describe("/sic-code-search", () => {
         "Grain milling",
         "Barley processing blocked, flaked, puffed or pearled manufacture"
       );
+    });
+
+    test("should respond with a 200 status code and return testData", async () => {
+      jest
+        .spyOn(SicCodeService.prototype, "search")
+        .mockImplementationOnce(() => Promise.reject(new Error()));
+
+      const pageTitle = "SIC Code Search";
+      const response = await request(app).post("/sic-code-search").send({
+        search_string: "barley",
+        matchOptions: "and",
+      });
+      expect(response.statusCode).toBe(200);
+      expectToHaveTitle(response.text, pageTitle);
+      expectToHaveErrorSummaryContaining(response.text, "A Server Error occured when trying to find your SIC Code");
     });
   });
 });
