@@ -12,11 +12,11 @@ afterEach(() => {
   jest.restoreAllMocks();
 });
 
-describe("/", () => {
+describe("/sic-code-search", () => {
   describe("GET ", () => {
     test("should respond with a 200 status code and have correct page title", async () => {
       const pageTitle = "SIC Code Search";
-      const response = await request(app).get("/").send();
+      const response = await request(app).get("/sic-code-search").send();
       expect(response.statusCode).toBe(200);
       expectToHaveTitle(response.text, pageTitle);
     });
@@ -31,7 +31,7 @@ describe("/", () => {
         .mockImplementationOnce(() => Promise.resolve(testData));
 
       const pageTitle = "SIC Code Search";
-      const response = await request(app).post("/").send({
+      const response = await request(app).post("/sic-code-search").send({
         search_string: "barley",
         match_phrase: false,
       });

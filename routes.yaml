@@ -3,4 +3,5 @@ group: web
 weight: 1000
 routes:
   1: /sic-code-search
+  2: /sic-code-search/healthcheck
   
