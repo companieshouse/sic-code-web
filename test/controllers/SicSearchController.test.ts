@@ -33,7 +33,7 @@ describe("/sic-code-search", () => {
       const pageTitle = "SIC Code Search";
       const response = await request(app).post("/sic-code-search").send({
         search_string: "barley",
-        match_phrase: false,
+        matchOptions: "and",
       });
       expect(response.statusCode).toBe(200);
       expectToHaveTitle(response.text, pageTitle);
