@@ -1,27 +1,54 @@
-.PHONY: build
-build: clean build-app build-static
-	npm run build
+artifact_name       := sic-code-web
 
-.PHONY: build-app
-build-app:
-	npm run build
+.PHONY: all
+all: build
 
 .PHONY: clean
 clean:
-	rm -rf dist/app dist/static
+	rm -f ./$(artifact_name)-*.zip
+	rm -rf ./dist
+	rm -rf ./build-*
+	rm -f ./build.log
 
-.PHONY: build-static
-build-static:
-	gulp static
+package-install:
+	npm install
 
-.PHONY: npm-install
-npm-install:
-	npm i
+.PHONY: build
+build:	package-install lint
+	npm run build
 
-.PHONY: gulp-install
-gulp-install:
-	npm install gulp-cli -g
+.PHONY: lint
+lint:
+	npm run lint
 
-.PHONY: init
-init: npm-install gulp-install build-static
+.PHONY: security-check
+security-check:
+	npm audit
 
+.PHONY: test
+test: test-unit
+
+.PHONY: test-unit
+test-unit:
+	npm run test
+
+.PHONY: package
+package: build
+ifndef version
+	$(error No version given. Aborting)
+endif
+	$(info Packaging version: $(version))
+	$(eval tmpdir := $(shell mktemp -d build-XXXXXXXXXX))
+	cp -r ./dist $(tmpdir)
+	cp -r ./package.json $(tmpdir)
+	cp -r ./package-lock.json $(tmpdir)
+	cp ./start.sh $(tmpdir)
+	cp ./routes.yaml $(tmpdir)
+	cd $(tmpdir) && npm install --production
+	rm $(tmpdir)/package.json $(tmpdir)/package-lock.json
+	cd $(tmpdir) && zip -r ../$(artifact_name)-$(version).zip .
+	rm -rf $(tmpdir)
+
+.PHONY: sonar
+sonar:
+	npm run analyse-code
