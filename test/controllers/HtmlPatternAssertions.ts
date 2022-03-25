@@ -17,6 +17,7 @@ export function expectToHaveTableRow(
 }
 
 export function expectToHaveErrorSummaryContaining(body: string, errorMessage: string): void {
+  // eslint-disable-next-line
   const patternStr = `<span.*class="govuk-error-summary">.*${errorMessage}.*<\/span>`;
   const pattern = new RegExp(patternStr, 's');
   expect(body).toMatch(pattern);
