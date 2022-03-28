@@ -6,8 +6,10 @@
   "scripts": {
     "start": "NODE_ENV=development ts-node ./src/server.ts",
     "dev": "NODE_ENV=development nodemon",
-    "build": "NODE_ENV=production tsc",
-    "postbuild": "copyfiles -f -V src/views/* dist/app/views",
+    "build": "tsc && gulp copy-views-styles",
+    "build:copy-views": "gulp copy-views",
+    "build:compile": "tsc",
+    "postbuild": "copyfiles -f -V src/views/* dist/views",
     "lint": "eslint '{src,test}/**/*'",
     "lint:fix": "eslint '{src,test}/**/*' --fix",
     "test": "NODE_ENV=test jest --runInBand --coverage",

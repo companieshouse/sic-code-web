@@ -1,18 +1,21 @@
 #!/bin/bash
 #
-# Start script for restricted-word-web
+# Start script for sic-code-web
 
 APP_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 if [[ -z "${MESOS_SLAVE_PID}" ]]; then
 
+    export PORT="${SIC_CODE_WEB_PORT}"
+
     source ~/.chs_env/private_env
     source ~/.chs_env/global_env
-    source ~/.chs_env/restricted-word-web/env
+
+    exec npm run start -- --PORT=$PORT
 
 else
 
-    export SIC_CODE_WEB_PORT="$1"
+    PORT="$1"
     CONFIG_URL="$2"
     ENVIRONMENT="$3"
     APP_NAME="$4"
@@ -26,7 +29,6 @@ else
     source "${APP_DIR}/private_env"
     source "${APP_DIR}/global_env"
     source "${APP_DIR}/app_env"
+
+    node ${APP_DIR}/dist/server.js -- $PORT
 fi
-
-
-node app/app

@@ -5,17 +5,19 @@
     "pretty": true,
     "sourceMap": true,
     "target": "es6",
-    "outDir": "./dist/app",
+    "outDir": "./dist",
     "baseUrl": "./src",
+    "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "strictNullChecks": true
   },
   "include": [
-    "src/**/*"
-, "test"  ],
+    "src/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ]
 }
+
