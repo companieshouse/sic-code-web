@@ -2,6 +2,7 @@ import  express from "express";
 import * as nunjucks from "nunjucks";
 import * as path from "path";
 import router from "./routers/routes";
+import config from "./config";
 // needed to add body-parser middleware to parse the POST form fields into a JavaScript object - https://thewebdev.info/2021/07/04/how-to-fix-the-express-js-req-body-undefined-error/
 import bodyParser from "body-parser";
 
@@ -31,6 +32,7 @@ const env = nunjucks.configure([
 
 app.set("views", viewPath);
 app.set("view engine", "njk");
+app.use(`/${config.urlPrefix}/public`, express.static(path.join(__dirname, "../dist")));
 
 // serve static assets in development. this will not execute in production.
 if (process.env.NODE_ENV === "development") {

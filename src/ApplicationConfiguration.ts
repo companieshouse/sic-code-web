@@ -6,6 +6,7 @@ type ApplicationConfiguration = Readonly<{
   internalApiKey: string;
   sicCodeApiTimeoutMilliseconds: number;
   port: number;
+  urlPrefix: string;
 }>;
 
 export default ApplicationConfiguration;
