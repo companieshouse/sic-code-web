@@ -10,8 +10,7 @@
     "postbuild": "copyfiles -f -V src/views/* dist/app/views",
     "lint": "eslint '{src,test}/**/*'",
     "lint:fix": "eslint '{src,test}/**/*' --fix",
-    "test": "NODE_ENV=test jest --runInBand",
-    "test:coverage": "NODE_ENV=test jest --runInBand --coverage",
+    "test": "NODE_ENV=test jest --runInBand --coverage",
     "analyse-code": "sonar-scanner"
   },
   "repository": {
