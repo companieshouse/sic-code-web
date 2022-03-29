@@ -1,7 +1,6 @@
-import { NextFunction, Request, Response } from "express";
+import { Request, Response } from "express";
 import { SicCodeService } from "../services/SicCodeService";
 import { loggerInstance } from "../utils/Logger";
-import e = require("express");
 import CombinedSicActivitiesApiModel from "../models/CombinedSicActivitiesApiModel";
 
 export class SicSearchController {
@@ -19,7 +18,7 @@ export class SicSearchController {
     });
   };
 
-  public search = async (req: Request, res: Response, next: NextFunction) => {
+  public search = async (req: Request, res: Response) => {
     const matchOptions = req.body.matchOptions ?? "or";
     let matchPhrase = false;
     if (matchOptions === "and") {

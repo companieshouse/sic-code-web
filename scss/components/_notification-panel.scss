@@ -1,0 +1,70 @@
+/*** TESTING ***/
+
+.notification-panel {
+  @include govuk-responsive-padding(3);
+  //@include govuk-responsive-margin(3);
+  margin-bottom: 15px;
+  color: govuk-colour('black');
+  @include govuk-media-query($media-type: print) {
+    color: $govuk-print-text-colour;
+  }
+
+  border: $govuk-border-width-narrow solid govuk-colour('blue');
+  background-color: lighten(govuk-colour('light-blue'), 47%);
+
+  @include govuk-media-query($from: tablet) {
+    border: $govuk-border-width solid govuk-colour('blue');
+  }
+
+  &.notify {}
+
+  &.error {
+    border-color: govuk-colour('red');
+    background-color: govuk-colour('white');
+  }
+}
+
+.notification-panel__title {
+  @include govuk-font($size: 24, $weight: bold);
+
+  margin-top: 0;
+  @include govuk-responsive-margin(4, 'bottom');
+}
+
+.notification-panel__body {
+  @include govuk-font($size: 19);
+
+  p {
+    margin-top: 0;
+    @include govuk-responsive-margin(4, 'bottom');
+  }
+}
+
+// Cross-component class - adjusts styling of list component
+.notification-panel__list {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.notification-panel__list a {
+  @include govuk-typography-weight-bold;
+
+  // Override default link styling to use error colour
+  &:active,
+  &:focus,
+  &:hover,
+  &:link,
+  &:visited {
+    color: $govuk-error-colour;
+    text-decoration: underline;
+  }
+
+  // alphagov/govuk_template includes a specific a:link:focus selector
+  // designed to make unvisited links a slightly darker blue when focussed, so
+  // we need to override the text colour for that combination of selectors.
+  @include govuk-compatibility(govuk_template) {
+    &:link:focus {
+      color: $govuk-error-colour;
+    }
+  }
+}

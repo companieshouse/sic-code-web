@@ -6,12 +6,14 @@
   "scripts": {
     "start": "NODE_ENV=development ts-node ./src/server.ts",
     "dev": "NODE_ENV=development nodemon",
-    "build": "NODE_ENV=production tsc",
-    "postbuild": "copyfiles -f -V src/views/* dist/app/views",
+    "build": "tsc && gulp copy-views-styles",
+    "build:copy-views": "gulp copy-views",
+    "build:compile": "tsc",
+    "postbuild": "copyfiles -f -V src/views/* dist/views",
     "lint": "eslint '{src,test}/**/*'",
     "lint:fix": "eslint '{src,test}/**/*' --fix",
-    "test": "NODE_ENV=test jest --runInBand",
-    "test:coverage": "NODE_ENV=test jest --runInBand --coverage"
+    "test": "NODE_ENV=test jest --runInBand --coverage",
+    "analyse-code": "sonar-scanner"
   },
   "repository": {
     "type": "git",
@@ -45,8 +47,9 @@
     "gulp": "^4.0.2",
     "gulp-sass": "^5.1.0",
     "jest": "^27.5.1",
-    "nodemon": "^2.0.15",
     "node-sass": "^5.0.0",
+    "nodemon": "^2.0.15",
+    "sonarqube-scanner": "^2.8.1",
     "supertest": "^6.2.2",
     "ts-jest": "^27.1.3",
     "ts-node": "^10.7.0",

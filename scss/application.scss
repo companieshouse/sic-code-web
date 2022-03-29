@@ -1,0 +1,56 @@
+// our variable overrides
+@import "variables";
+
+// the govuk frontend
+@import "../node_modules/govuk-frontend/govuk/all";
+
+// Patterns that aren't in Frontend
+@import "patterns/step-by-step-navigation";
+@import "patterns/task-list";
+@import "patterns/related-items";
+@import "patterns/filters";
+@import "patterns/pagination";
+
+// Components that aren't in Frontend
+@import "components/cookie-banner";
+@import "components/notification-panel";
+
+.js-is-disabled {
+  display: none;
+}
+
+// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+tr:nth-child(even) {
+  background: #f1f1f1;
+}
+
+.govuk-table__body td,
+.govuk-table__body th {
+  padding: 10px 10px 10px 5px;
+  vertical-align: middle;
+}
+
+.govuk-notification {
+  border: 5px solid #1d70b8;
+}
+
+.govuk-notification p {
+  margin-bottom: 0;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-notification {
+    padding: 20px;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-notification {
+    margin-bottom: 50px;
+  }
+}
+
+.filters-wrapper .govuk-radios {
+  padding: .5em 0;
+}
+

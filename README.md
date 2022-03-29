@@ -22,6 +22,7 @@ This Node.js application is based on the [Node Web Starter](https://github.com/c
     - [Running the server](#running-the-server)
     - [Static assets](#static-assets)
     - [Compiling the application](#compiling-the-application)
+    - [Testing](#testing)
     - [Linting](#linting)
 
 ### Quick start
@@ -91,6 +92,13 @@ TypeScript compiles down the JavaScript code that eventually gets run via NodeJS
   `npm run build`
 
 **It is this code that gets run in production.**
+
+### Testing
+
+[Jest](https://jestjs.io/) is used in testing
+
+  `npm run test`
+  `npm run test:coverage`
 
 ### Linting
 
