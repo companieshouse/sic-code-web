@@ -2,7 +2,14 @@
 
 ## Overview
 
-This web app allows you to enter keywords for a SIC code lookup based on the economic activities that make up a SIC Code. A SIC Code is an abbreviation of "Standard industrial classification of economic activities"
+This web app allows you to enter keywords for a SIC code search using the [sic-code-api](https://github.com/companieshouse/sic-code-api). A SIC Code is an abbreviation of "Standard industrial classification of economic activities".
+
+It has one screen with a search form, with the following input fields:
+
+- search text: add one or more keywords to be used in the search (the search is case insensitive).
+- match phrase checkbox: if selected then results will only be returned if the exact phrase is present.
+
+When this form is submitted then the search parameters are posted to the `sic-code-api` and the results are displayed with the search parameters.
 
 This Node.js application is based on the [Node Web Starter](https://github.com/companieshouse/node-web-starter) template and uses:
 

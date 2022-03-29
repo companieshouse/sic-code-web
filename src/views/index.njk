@@ -20,7 +20,7 @@
 
     {{ govukInput({
     label: {
-        text: "Enter keyword(s) to search for SIC code",
+        text: "Enter keyword(s) to search for SIC code (case insensitive)",
         classes: "govuk-label--l",
         isPageHeading: true
     },
@@ -34,7 +34,7 @@
   name: "matchOptions",
   fieldset: {
     legend: {
-      text: "Match Options",
+      text: "Match Exact Phrase",
       isPageHeading: true,
       classes: "govuk-fieldset__legend--m"
     }
@@ -42,7 +42,7 @@
   items: [
     {
       value: "and",
-      text: "Only match when all keywords are found",
+      text: "Only match when the exact phrase is found",
       checked: true if matchOptions === 'and'
     }
   ]
