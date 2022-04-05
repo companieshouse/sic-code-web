@@ -8,24 +8,28 @@ export function generateTestData(): CombinedSicActivitiesApiModel[] {
       sic_description:
         "Growing of cereals except rice, leguminous crops and oil seeds",
       is_ch_activity: false,
+      search_score: 1
     },
     {
       sic_code: "11060",
       activity_description: "Barley malting manufacture",
       sic_description: "Manufacture of malt",
       is_ch_activity: false,
+      search_score: 1
     },
     {
       sic_code: "10611",
       activity_description: "Barley milling manufacture",
       sic_description: "Grain milling",
       is_ch_activity: false,
+      search_score: 1
     },
     {
       sic_code: "10611",
       activity_description: "Barley meal production manufacture",
       sic_description: "Grain milling",
       is_ch_activity: false,
+      search_score: 1
     },
     {
       sic_code: "10611",
@@ -33,6 +37,7 @@ export function generateTestData(): CombinedSicActivitiesApiModel[] {
         "Barley processing blocked, flaked, puffed or pearled manufacture",
       sic_description: "Grain milling",
       is_ch_activity: false,
+      search_score: 1
     },
   ];
 }
