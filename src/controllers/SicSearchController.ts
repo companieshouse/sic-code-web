@@ -47,15 +47,18 @@ export class SicSearchController {
   };
 
   private format(searchResults: CombinedSicActivitiesApiModel[]) {
-    return searchResults.map((obj) => [
+    return searchResults.map((obj, index) => [
       {
         text: obj.sic_code,
+        attributes: { id: "sic_code_data_" + (index + 1) }
       },
       {
         text: obj.sic_description,
+        attributes: { id: "sic_description_data_" + (index + 1) }
       },
       {
         text: obj.activity_description,
+        attributes: { id: "activity_description_data_" + (index + 1) }
       },
     ]);
   }

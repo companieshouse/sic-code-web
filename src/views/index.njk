@@ -60,19 +60,22 @@
         captionClasses: "govuk-table__caption--m",
         head: [
           {
-            text: "SIC Code"
+            text: "SIC Code",
+            attributes: { id: "sic_code_header" }
           },
           {
-            text: "SIC Description"
+            text: "SIC Description",
+            attributes: { id: "sic_code_header" }
           },
           {
-            text: "Economic Activity"
+            text: "Economic Activity",
+            attributes: { id: "economic_activity_header" }
           }
         ],
         rows: matches
       }) }}
 {% elif matches %}
-     <h3 class="govuk-heading-m">No Matches</h3>
+     <h3 class="govuk-heading-m" id="no_sic_code_matches_message">No Matches</h3>
 {% endif %}
 
 {% endblock %}
