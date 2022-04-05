@@ -20,7 +20,7 @@ export class SicCodeService {
   public async search(
     searchString: string,
     matchPhrase: boolean
-  ): Promise<CombinedSicActivitiesApiModel[]>  {
+  ): Promise<CombinedSicActivitiesApiModel[]> {
     const contextId = config.contextIdPrefix + "-" + uuidv4();
     const logPrefix = `context_id=${contextId} ${SicCodeService.name} -`;
     const url = `${config.internalApiBaseUrl}/internal/sic-code-search`;
@@ -37,6 +37,12 @@ export class SicCodeService {
       loggerInstance().info(
         `${logPrefix} Number of results returned = ${response.data.length}`
       );
+
+      if (response.data.length > 0) {
+        loggerInstance().info(
+          `${logPrefix} Top result score = ${response.data[0].search_score}`
+        );
+      }
 
       return response.data;
     } catch (error) {
