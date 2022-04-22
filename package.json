@@ -4,7 +4,7 @@
   "description": "Sic Code Web Application to allow users to search for SIC Codes from the economic activities of their business",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development ts-node ./src/server.ts",
+    "start": "NODE_ENV=development ts-node ./dist/server.js",
     "dev": "NODE_ENV=development nodemon",
     "build": "tsc && gulp copy-views-styles",
     "build:copy-views": "gulp copy-views",
