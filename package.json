@@ -47,7 +47,7 @@
     "gulp": "^4.0.2",
     "gulp-sass": "^5.1.0",
     "jest": "^27.5.1",
-    "node-sass": "^5.0.0",
+    "node-sass": "^7.0.1",
     "nodemon": "^2.0.15",
     "sonarqube-scanner": "^2.8.1",
     "supertest": "^6.2.2",
