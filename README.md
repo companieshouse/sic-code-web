@@ -42,7 +42,7 @@ And then start the application:
 
   `npm start` or  `npm run dev` (uses `nodemon`)
 
-Then go to [http://localhost:3000](http://localhost:3000).
+Then go to [http://localhost:3000/sic-code-search](http://localhost:3000/sic-code-search).
 
 If running the node application behind a **proxy server** and using an Sic Code API in AWS - make sure that you do NOT have anything in your PROXY environmental variables
 
