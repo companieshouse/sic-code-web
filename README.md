@@ -34,6 +34,11 @@ This Node.js application is based on the [Node Web Starter](https://github.com/c
 
 ### Quick start
 
+Prerequisites
+
+- Node 16 or higher
+- NPM 8 or higher
+
 Install the dependencies:
 
   `make init`
