@@ -15,6 +15,10 @@
     "test": "NODE_ENV=test jest --runInBand --coverage",
     "analyse-code": "sonar-scanner"
   },
+  "engines": {
+    "npm": ">=8.0.0",
+    "node": ">=16.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/companieshouse/sic-code-web.git"
@@ -37,7 +41,7 @@
   "devDependencies": {
     "@types/express": "^4.17.13",
     "@types/jest": "^27.4.1",
-    "@types/node": "^17.0.21",
+    "@types/node": "^18.11.18",
     "@types/nunjucks": "^3.2.1",
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.16.0",
@@ -47,7 +51,7 @@
     "gulp": "^4.0.2",
     "gulp-sass": "^5.1.0",
     "jest": "^27.5.1",
-    "node-sass": "^5.0.0",
+    "node-sass": "^8.0.0",
     "nodemon": "^2.0.15",
     "sonarqube-scanner": "^2.8.1",
     "supertest": "^6.2.2",

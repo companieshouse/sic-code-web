@@ -67,6 +67,11 @@ You are going to need a few things to begin. Firstly, NodeJS. There are a few wa
 
 Node version manager allows you to install multiple versions side by side on the host machine.
 
+You will need:
+
+- Node 16 or higher
+- NPM 8 or higher
+
 Once you have that installed, you will need to install the dependencies (locally) and [GulpJS](https://gulpjs.com) (globally). This task runner is used to compile the [Sass](https://sass-lang.com) used in the GovUK Frontend.
 
     npm i
