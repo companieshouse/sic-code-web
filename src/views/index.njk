@@ -55,8 +55,15 @@
 </form>
 
 {% if matches|length %}
+
+   {% if matches|length == 1 %}
+     {% set resultsCaption = "There is " + (matches|length) + " result for '" + searchText  + "'" %}
+     {% else %}
+     {% set resultsCaption = "There are " + (matches|length) + " results for '" + searchText  + "'" %}
+   {% endif %}
+
    {{ govukTable({
-        caption: "Matching SIC Codes",
+        caption: resultsCaption,
         captionClasses: "govuk-table__caption--m",
         head: [
           {
@@ -74,7 +81,9 @@
         ],
         rows: matches
       }) }}
-{% elif matches %}
+{% elif matches and searchText %}
+     <h3 class="govuk-heading-m" id="no_sic_code_matches_message">There are 0 results for '{{ searchText }}'</h3>
+{% elif matches%}
      <h3 class="govuk-heading-m" id="no_sic_code_matches_message">No Matches</h3>
 {% endif %}
 
