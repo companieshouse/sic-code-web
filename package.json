@@ -52,7 +52,7 @@
     "gulp-sass": "^5.1.0",
     "jest": "^27.5.1",
     "node-sass": "^8.0.0",
-    "nodemon": "^2.0.15",
+    "nodemon": "^2.0.20",
     "sonarqube-scanner": "^2.8.1",
     "supertest": "^6.2.2",
     "ts-jest": "^27.1.3",
