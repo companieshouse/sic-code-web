@@ -1,12 +1,34 @@
-{%- set assetPath = '/public' -%}
 {% extends "govuk/template.njk" %}
 
 {% block head %}
-<!--[if lte IE 8]><link href="/public/stylesheets/application-ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
-<!--[if gt IE 8]><!--><link href="/{{urlPrefix}}/public/stylesheets/application.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
+    <!--[if !IE 8]><!-->
+    <link href="{{assetPath}}/stylesheets/govuk-frontend/v4.6.0/govuk-frontend-4.6.0.min.css" rel="stylesheet"/>
+    <!--<![endif]-->
 
-{% for stylesheetUrl in extensionConfig.stylesheets %}
-  <link href="{{ stylesheetUrl }}" rel="stylesheet" type="text/css" />
-{% endfor %}
-
+    {# For Internet Explorer 8, you need to compile specific stylesheet #}
+    {# see https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/supporting-internet-explorer-8.md #}
+    <!--[if IE 8]>
+      <link href="{{assetPath}}/stylesheets/govuk-frontend/v4.6.0/govuk-frontend-ie8-4.6.0.min.css" rel="stylesheet" />
+    <![endif]-->
+    {% block download %}{% endblock %}
 {% endblock %}
+
+{% block bodyEnd %}
+    {# Run JavaScript at end of the <body>, to avoid blocking the initial render. #}
+    <script src="{{assetPath}}/javascripts/govuk-frontend/v4.6.0/govuk-frontend-4.6.0.min.js"></script>
+    <script>
+        window
+            .GOVUKFrontend
+            .initAll()
+    </script>
+    {# {% include "includes/piwik-scripts.html" %} #}
+{% endblock %}
+
+{% macro errorSummary() %}
+    {% if formValidationResult.hasErrors %}
+        {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: formValidationResult.errors
+        }) }}
+    {% endif %}
+{% endmacro %}

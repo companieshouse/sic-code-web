@@ -22,6 +22,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
+# Copy the current working directory of your local machine into the current working directory of the container.
 COPY . .
 
 EXPOSE 3000
