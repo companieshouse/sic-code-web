@@ -2,6 +2,7 @@ import ApplicationConfiguration from "./ApplicationConfiguration";
 
 const config: ApplicationConfiguration = {
   applicationNamespace: "sic-code-web",
+  cdnHost: process.env.CDN_HOST as string,
   urlPrefix: "sic-code-search",
   contextIdPrefix: process.env.CONTEXT_ID_PREFIX || "sic_code_web",
   env: (process.env.NODE_ENV || "development").toLowerCase(),
