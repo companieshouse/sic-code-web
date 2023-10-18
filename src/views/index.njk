@@ -81,9 +81,7 @@
         ],
         rows: matches
       }) }}
-{% elif matches and searchText %}
-     <h3 class="govuk-heading-m" id="no_sic_code_matches_message">There are 0 results for '{{ searchText }}'</h3>
-{% elif matches%}
+{% else %}
      <h3 class="govuk-heading-m" id="no_sic_code_matches_message">No Matches</h3>
 {% endif %}
 
