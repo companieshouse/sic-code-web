@@ -62,9 +62,8 @@
      {% set resultsCaption = "There are " + (matches|length) + " results for '" + searchText  + "'" %}
    {% endif %}
 
+   <h3 class="govuk-heading-m" id="sic_code_results_caption">{{ resultsCaption }}</h3>
    {{ govukTable({
-        caption: resultsCaption,
-        captionClasses: "govuk-table__caption--m",
         head: [
           {
             text: "SIC Code",
