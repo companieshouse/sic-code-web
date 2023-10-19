@@ -57,12 +57,12 @@
 {% if matches|length %}
 
    {% if matches|length == 1 %}
-     {% set resultsCaption = "There is " + (matches|length) + " result for '" + searchText  + "'" %}
+     {% set resultsCountMessage = "There is " + (matches|length) + " result for '" + searchText  + "'" %}
      {% else %}
-     {% set resultsCaption = "There are " + (matches|length) + " results for '" + searchText  + "'" %}
+     {% set resultsCountMessage = "There are " + (matches|length) + " results for '" + searchText  + "'" %}
    {% endif %}
 
-   <h3 class="govuk-heading-m" id="sic_code_results_caption">{{ resultsCaption }}</h3>
+   <h3 class="govuk-heading-m" id="sic_code_results_count_message">{{ resultsCountMessage }}</h3>
    {{ govukTable({
         head: [
           {
