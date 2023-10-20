@@ -13,6 +13,12 @@
     {% block download %}{% endblock %}
 {% endblock %}
 
+{% block header %}
+  {{ govukHeader({
+    serviceName: "Find a Standard Industrial Classification (SIC) code"
+  }) }}
+{% endblock %}
+
 {% block bodyEnd %}
     {# Run JavaScript at end of the <body>, to avoid blocking the initial render. #}
     <script src="{{assetPath}}/javascripts/govuk-frontend/v4.6.0/govuk-frontend-4.6.0.min.js"></script>
