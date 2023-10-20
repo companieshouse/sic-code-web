@@ -16,7 +16,7 @@ afterEach(() => {
 describe("/sic-code-search", () => {
   describe("GET ", () => {
     test("should respond with a 200 status code and have correct page title", async () => {
-      const pageTitle = "SIC Code Search";
+      const pageTitle = "Find a Standard Industrial Classification (SIC) code – GOV.UK";
       const response = await request(app).get("/sic-code-search").send();
       expect(response.statusCode).toBe(200);
       expectToHaveTitle(response.text, pageTitle);
@@ -31,7 +31,7 @@ describe("/sic-code-search", () => {
         .spyOn(SicCodeService.prototype, "search")
         .mockImplementationOnce(() => Promise.resolve(testData));
 
-      const pageTitle = "SIC Code Search";
+      const pageTitle = "Find a Standard Industrial Classification SIC code – GOV.UK";
       const response = await request(app).post("/sic-code-search").send({
         search_string: "barley",
         matchOptions: "or",
@@ -76,7 +76,7 @@ describe("/sic-code-search", () => {
         .spyOn(SicCodeService.prototype, "search")
         .mockImplementationOnce(() => Promise.reject(new Error()));
 
-      const pageTitle = "SIC Code Search";
+      const pageTitle = "Find a Standard Industrial Classification SIC code – GOV.UK";
       const response = await request(app).post("/sic-code-search").send({
         search_string: "barley",
         matchOptions: "and",
