@@ -34,7 +34,7 @@ This 'Docker CHS Development' project has:
 1. Environment variables used to configure this service in docker are located in the file `services/modules/sic-code/sic-code-web.docker-compose.yaml`. 
 2. The database file to add more data for this environment is in 'services/modules/sic-code/assets/database.mongo.js'
 
-## Running locally on Docker env
+## Debug locally on Docker env
 
 1. Enable development mode (see last section). Note that the `inspect option` is added in the `package.json` file just before the call to `tsnode` to avoid "address already in use" message
 2. In [Docker CHS Development](https://github.com/companieshouse/docker-chs-development) project file `services/modules/sic-code/sic-code-web.docker-compose.yaml` add an extra line to the ports section to allow the debugger port to be viewed outside of docker. Do **not** push this change to the master branch of [Docker CHS Development](https://github.com/companieshouse/docker-chs-development) 
