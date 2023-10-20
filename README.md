@@ -34,6 +34,27 @@ This 'Docker CHS Development' project has:
 1. Environment variables used to configure this service in docker are located in the file `services/modules/sic-code/sic-code-web.docker-compose.yaml`. 
 2. The database file to add more data for this environment is in 'services/modules/sic-code/assets/database.mongo.js'
 
+## Debug locally on Docker env
+
+1. Enable development mode (see last section). Note that the `inspect option` is added in the `package.json` file just before the call to `tsnode` to avoid "address already in use" message
+2. In [Docker CHS Development](https://github.com/companieshouse/docker-chs-development) project file `services/modules/sic-code/sic-code-web.docker-compose.yaml` add an extra line to the ports section to allow the debugger port to be viewed outside of docker. Do **not** push this change to the master branch of [Docker CHS Development](https://github.com/companieshouse/docker-chs-development) 
+```
+    ports:
+      - 3000:3000
+      - 9229:9229
+```
+3. Use [Confluence guide on debugging within Docker CHS Development](https://companieshouse.atlassian.net/wiki/spaces/DEV/pages/4200824887/CHS+-+Maven+Node.js+and+GO+Remote+Debugging) to configure your IDE to attach to the debugger port after the existing application listening port (3000). 
+
+In the node log you will see a message something like
+
+``` 
+[nodemon] starting `NODE_OPTIONS=--inspect=0.0.0.0:9229 ts-node ./src/server.ts`
+Debugger listening on ws://0.0.0.0:9229/cff146e9-f30b-4bfb-af0e-168bb18d7b81
+For help, see: https://nodejs.org/en/docs/inspector
+{"created":"2023-10-20T09:03:48.088+00:00","event":"debug","namespace":"sic-code-web","data":{"message":"Starting app in mode [development] using CDN [http://cdn.chs.local] and sic-code-api at [http://api.chs.local:4001]"}}
+server listening on 0.0.0.0:3000
+```
+
 ## Build and Test changes
 
 1. To compile the project use `make build`

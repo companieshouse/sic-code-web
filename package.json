@@ -64,6 +64,6 @@
     "ignore": [
       "**/*.test.ts"
     ],
-    "exec": "ts-node ./src/server.ts"
+    "exec": "NODE_OPTIONS=--inspect=0.0.0.0:9229 ts-node ./src/server.ts"
   }
 }
