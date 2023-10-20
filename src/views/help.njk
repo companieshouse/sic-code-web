@@ -1,0 +1,14 @@
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% set guidance %}
+  <p>To search for a SIC code, you should:
+    <ul>
+      <li>enter as much detail as you can - for example, ‘retail of clothing’ <br> instead of ‘retail’</li>
+      <li>describe what you do if you’re self-employed - for example, ‘farming' <br> instead of ‘farmer’</li>
+      <li>check the spelling is correct</li>
+    </ul>
+</p>
+  {% endset %}
+  {{ govukDetails({
+        summaryText: "Help with searching for a SIC code",
+        html: guidance
+        }) }}
