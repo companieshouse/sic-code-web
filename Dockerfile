@@ -1,5 +1,4 @@
-FROM 169942020521.dkr.ecr.eu-west-2.amazonaws.com/base/node-16:alpine-builder
-FROM 169942020521.dkr.ecr.eu-west-2.amazonaws.com/base/node-16:alpine-runtime
+FROM 416670754337.dkr.ecr.eu-west-2.amazonaws.com/ci-node-build-20
 
 # Maintainer
 LABEL maintainer="Parental Advisory"
