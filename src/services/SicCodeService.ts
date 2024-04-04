@@ -23,7 +23,7 @@ export class SicCodeService {
   ): Promise<CombinedSicActivitiesApiModel[]> {
     const contextId = config.contextIdPrefix + "-" + uuidv4();
     const logPrefix = `context_id=${contextId} ${SicCodeService.name} -`;
-    const url = `${config.internalApiBaseUrl}/internal/sic-code-search`;
+    const url = `${config.internalApiBaseUrl}/internal/sic-code-search/search`;
     try {
       loggerInstance().info(
         `${logPrefix} Making a POST request to ${url} with search string [${searchString}] and match phrase [${matchPhrase}]`
