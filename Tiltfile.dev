@@ -1,5 +1,5 @@
 custom_build(
-    ref = '169942020521.dkr.ecr.eu-west-2.amazonaws.com/local/sic-code-web',
+    ref = '416670754337.dkr.ecr.eu-west-2.amazonaws.com/sic-code-web',
     #the following build-command was updated as specified by https://github.com/companieshouse/docker-chs-development/pull/581
     command = 'DOCKER_BUILDKIT=0 docker build --build-arg SSH_KEY="$(cat ~/.ssh/id_rsa)" --build-arg SSH_PRIVATE_KEY_PASSPHRASE --tag $EXPECTED_REF . -f Dockerfile.dev',
     live_update = [
