@@ -83,4 +83,14 @@ module "ecs-service" {
   use_set_environment_files   = local.use_set_environment_files
 
   depends_on = [module.secrets]
+
+  # eric options for eric running Web module
+  # eric secrets not used in WEB mode, so passing in an empty array
+  use_eric_reverse_proxy    = true
+  eric_version              = var.eric_version
+  eric_cpus                 = var.eric_cpus
+  eric_memory               = var.eric_memory
+  eric_port                 = local.eric_port
+  eric_environment_filename = local.eric_environment_filename
+  eric_secrets              = []
 }

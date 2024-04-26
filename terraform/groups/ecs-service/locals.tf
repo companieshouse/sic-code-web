@@ -5,6 +5,7 @@ locals {
   global_prefix             = "global-${var.environment}"
   service_name              = "sic-code-web"
   container_port            = "3000" # default node port required here until prod docker container is built allowing port change via env var
+  eric_port                  = "10000"
   docker_repo               = "sic-code-web"
   kms_alias                 = "alias/${var.aws_profile}/environment-services-kms"
   lb_listener_rule_priority = 98
@@ -67,4 +68,6 @@ locals {
   task_environment = concat(local.ssm_global_version_map,local.ssm_service_version_map,[
     { "name" : "SIC_CODE_WEB_PORT", "value" : "${local.container_port}" }
   ])
+
+  eric_environment_filename = "eric-web.env"
 }
