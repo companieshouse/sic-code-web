@@ -32,7 +32,6 @@ export class SicCodeService {
       const response = await this.axiosInstance.post(url, {
         search_string: searchString,
         match_phrase: matchPhrase,
-        context_id: xRequestId,
        },
        { headers: requiredHeaders }
      );

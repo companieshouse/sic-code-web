@@ -3,23 +3,6 @@ describe("environmental variables", () => {
     jest.resetModules();
   });
 
-  it("provides contextIdPrefix variable configured from the environment", () => {
-    process.env.CONTEXT_ID_PREFIX = "sic_code_web_config_test";
-
-    // eslint-disable-next-line
-    const configModule = require("../src/config").default;
-
-    expect(configModule.contextIdPrefix).toEqual("sic_code_web_config_test");
-  });
-
-  it("provides default contextIdPrefix variable when not present in environment", () => {
-    delete process.env.CONTEXT_ID_PREFIX;
-
-    // eslint-disable-next-line
-    const configModule = require("../src/config").default;
-
-    expect(configModule.contextIdPrefix).toEqual("sic_code_web");
-  });
 
   it("provides internalApiBaseUrl variable configured from the environment", () => {
     process.env.INTERNAL_API_URL = "localhost_config_test";
