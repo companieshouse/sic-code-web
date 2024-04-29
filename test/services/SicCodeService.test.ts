@@ -18,6 +18,7 @@ describe("SicCodeService", () => {
       const testData = generateTestData();
       const searchString = "ABC";
       const matchPhrase = false;
+      const xRequestId = "12345";
 
       mockedAxios.post.mockImplementationOnce(() =>
         Promise.resolve({
@@ -27,7 +28,7 @@ describe("SicCodeService", () => {
       );
 
       // when
-      const result = await sicCodeService.search(searchString, matchPhrase);
+      const result = await sicCodeService.search(searchString, matchPhrase, xRequestId);
       // then
       expect(result).toEqual(testData);
     });
@@ -42,9 +43,10 @@ describe("SicCodeService", () => {
       );
       const searchString = "ABC";
       const matchPhrase = false;
+      const xRequestId = "12345";
 
       // when
-      await sicCodeService.search(searchString, matchPhrase).catch((err) => {
+      await sicCodeService.search(searchString, matchPhrase, xRequestId).catch((err) => {
         // then
         expect(expect(err.response.status).toBe(503));
       });

@@ -1,7 +1,6 @@
 type ApplicationConfiguration = Readonly<{
   applicationNamespace: string;
   cdnHost: string;
-  contextIdPrefix: string;
   env: string;
   internalApiBaseUrl: string;
   internalApiKey: string;
