@@ -27,7 +27,7 @@ export class SicSearchController {
     const xRequestId = req.header('X-Request-Id') || '';
 
     try {
-      loggerInstance().debugRequest(req,`context=${xRequestId} - Search: ${req.body.sicCodeSearchName} MatchPhrase: ${matchPhrase}`);
+      loggerInstance().debugRequest(req, `context=${xRequestId} - Search: ${req.body.sicCodeSearchName} MatchPhrase: ${matchPhrase}`);
       const searchResults = await this.sicCodeService.search(
         req.body.sicCodeSearchName,
         matchPhrase,
