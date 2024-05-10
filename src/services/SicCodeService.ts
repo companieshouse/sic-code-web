@@ -15,7 +15,7 @@ export class SicCodeService {
   public async search(
     searchString: string,
     matchPhrase: boolean,
-    xRequestId: string 
+    xRequestId: string
   ): Promise<CombinedSicActivitiesApiModel[]> {
     const logPrefix = `context=${xRequestId} -`;
     const url = `${config.internalApiBaseUrl}/internal/sic-code-search/search`;
@@ -32,9 +32,10 @@ export class SicCodeService {
       const response = await this.axiosInstance.post(url, {
         search_string: searchString,
         match_phrase: matchPhrase,
-       },
-       { headers: requiredHeaders }
-     );
+      }, {
+        headers: requiredHeaders
+      }
+      );
       loggerInstance().info(
         `${logPrefix} Number of results returned = ${response.data.length}`
       );
