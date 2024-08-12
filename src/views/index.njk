@@ -14,6 +14,12 @@
 
 <form method="POST">
 
+      {{
+        csrfTokenInput({
+          csrfToken: csrfToken
+        })
+      }}
+
     {%if errors %}
       <p class="govuk-error-summary">A Server Error occured when trying to find your SIC Code</p>
     {% endif %}

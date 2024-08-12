@@ -1,5 +1,7 @@
 {% extends "govuk/template.njk" %}
 
+{% from "web-security-node/components/csrf-token-input/macro.njk" import csrfTokenInput %}
+
 {% block head %}
     <!--[if !IE 8]><!-->
     <link href="{{assetPath}}/stylesheets/govuk-frontend/v3.11.0/govuk-frontend-3.11.0.min.css" rel="stylesheet"/>
