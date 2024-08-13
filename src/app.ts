@@ -11,7 +11,7 @@ import cookieParser from "cookie-parser";
 import Redis from "ioredis";
 import { SessionMiddleware, SessionStore, CookieConfig } from "@companieshouse/node-session-handler";
 import {CsrfProtectionMiddleware} from "@companieshouse/web-security-node"
-import csrfErrorHandler from "middleware/createCsrfErrorMiddleware";
+import csrfErrorHandler from "./middleware/createCsrfErrorMiddleware";
 
 const sessionStore = new SessionStore(new Redis(`redis://${config.session.cacheServer}`));
 const cookieConfig: CookieConfig = { cookieName: config.session.cookieName, cookieSecret: config.session.cookieSecret, cookieDomain: config.session.cookieDomain };
