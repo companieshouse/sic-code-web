@@ -1,4 +1,4 @@
-import sinon, { SinonStubbedInstance } from "sinon";
+import sinon from "sinon";
 import middleware from "../../src/middleware/createCsrfErrorMiddleware";
 import { expect } from "chai";
 import { CsrfError } from "@companieshouse/web-security-node";
@@ -21,7 +21,7 @@ describe("createCsrfErrorMiddleware", function () {
     const response = createMockResponse();
     const mockNext = createMockNext();
 
-    // @ts-expect-error
+    // @ts-expect-error passing null request
     middleware(error, null, response, mockNext);
 
     expect(response.status).callCount(0);
@@ -34,7 +34,7 @@ describe("createCsrfErrorMiddleware", function () {
     const mockNext = createMockNext();
     response.status.returns(response);
 
-    // @ts-expect-error
+    // @ts-expect-error passing null request
     middleware(error, null, response, mockNext);
 
     expect(response.status).calledOnceWithExactly(403);
