@@ -10,7 +10,7 @@
     "build": "tsc && copyfiles -f -V src/views/* dist/views",
     "lint": "eslint '{src,test}/**/*'",
     "lint:fix": "eslint '{src,test}/**/*' --fix",
-    "test": "NODE_ENV=test jest --runInBand --coverage",
+    "test": "NODE_ENV=test jest --runInBand --coverage --detectOpenHandles",
     "analyse-code": "sonar-scanner"
   },
   "engines": {
@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/companieshouse/sic-code-web#readme",
   "dependencies": {
+    "@companieshouse/node-session-handler": "^5.0.1",
     "@companieshouse/structured-logging-node": "^1.0.4",
     "@companieshouse/web-security-node": "^4.1.1",
     "axios": "^1.6.7",

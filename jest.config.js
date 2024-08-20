@@ -11,5 +11,6 @@ module.exports = {
   },
   moduleNameMapper: {
     '^axios$': require.resolve('axios'),
-  }
+  },
+  globalSetup: "./test/setup.ts"
 };
