@@ -7,6 +7,12 @@ type ApplicationConfiguration = Readonly<{
   sicCodeApiTimeoutMilliseconds: number;
   port: number;
   urlPrefix: string;
+  session: {
+    cookieName: string;
+    cookieSecret: string;
+    cookieDomain: string;
+    cacheServer: string;
+};
 }>;
 
 export default ApplicationConfiguration;

@@ -9,6 +9,8 @@ import {
 import request from "supertest";
 import app from "../../src/app";
 
+jest.mock("ioredis");
+
 afterEach(() => {
   jest.restoreAllMocks();
 });
