@@ -20,14 +20,12 @@ This Node.js application is based on the [Node Web Starter](https://github.com/c
 
 ## Running locally on Docker env
 
-The recommended local development method, using development orchestrator service in [Docker CHS Development](https://github.com/companieshouse/docker-chs-development), that uses [tilt](https://tilt.dev/).
+The recommended local development testing method is to use [Docker CHS Development](https://github.com/companieshouse/docker-chs-development) and [chs-dev](https://github.com/companieshouse/chs-dev).
 
-1. Clone [Docker CHS Development](https://github.com/companieshouse/docker-chs-development) and follow the steps in the README.
-2. Run `./bin/chs-dev modules enable sic-code`
-3. Run `./bin/chs-dev development enable sic-code-web` (this will allow you to make changes in real time).
-4. Run docker using `tilt up` in the docker-chs-development directory.
-5. Use spacebar in the command line to open tilt window in a browser - wait for sic-code-web to become green.(If you have credential errors then  you may not be logged into `eu-west-2`.)
-6. Open your browser and go to page <http://chs.local/sic-code-search>
+1. Run `chs-dev modules enable sic-code`
+2. Run `chs-dev development enable sic-code-web` (this will allow you to make changes in real time).
+3. Run docker using `chs-dev up` in the `docker-chs-development` directory.
+4. Open your browser and go to page <http://chs.local/sic-code-search>
 
 This 'Docker CHS Development' project has:
 
@@ -38,16 +36,18 @@ This 'Docker CHS Development' project has:
 
 1. Enable development mode (see last section). Note that the `inspect option` is added in the `package.json` file just before the call to `tsnode` to avoid "address already in use" message
 2. In [Docker CHS Development](https://github.com/companieshouse/docker-chs-development) project file `services/modules/sic-code/sic-code-web.docker-compose.yaml` add an extra line to the ports section to allow the debugger port to be viewed outside of docker. Do **not** push this change to the master branch of [Docker CHS Development](https://github.com/companieshouse/docker-chs-development) 
-```
+
+``` yaml
     ports:
       - 3000:3000
       - 9229:9229
 ```
-3. Use [Confluence guide on debugging within Docker CHS Development](https://companieshouse.atlassian.net/wiki/spaces/DEV/pages/4200824887/CHS+-+Maven+Node.js+and+GO+Remote+Debugging) to configure your IDE to attach to the debugger port after the existing application listening port (3000). 
+
+1. Use [Confluence guide on debugging within Docker CHS Development](https://companieshouse.atlassian.net/wiki/spaces/DEV/pages/4200824887/CHS+-+Maven+Node.js+and+GO+Remote+Debugging) to configure your IDE to attach to the debugger port after the existing application listening port (3000). 
 
 In the node log you will see a message something like
 
-``` 
+``` bash
 [nodemon] starting `NODE_OPTIONS=--inspect=0.0.0.0:9229 ts-node ./src/server.ts`
 Debugger listening on ws://0.0.0.0:9229/cff146e9-f30b-4bfb-af0e-168bb18d7b81
 For help, see: https://nodejs.org/en/docs/inspector
@@ -87,8 +87,8 @@ CDN_HOST                                    | Path to CH Styling for this applic
 
 [Jest](https://jestjs.io/) is used in testing
 
-  `npm run test`
-  `npm run test:coverage`
+`npm run test`
+`npm run test:coverage`
 
 ### Linting
 
