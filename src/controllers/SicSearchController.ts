@@ -11,7 +11,9 @@ export class SicSearchController {
   }
 
   public renderView = (req: Request, res: Response) => {
+
     res.render("index", {
+      backLinkUrl: req.query.prevPage,
       searchText: "",
       matches: undefined,
       matchOptions: "or",
