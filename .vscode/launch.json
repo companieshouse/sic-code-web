@@ -9,7 +9,7 @@
                 "request": "attach",
                 "name": "attach - remote",
                 "address": "localhost",
-                "port": 9229,
+                "port": 9242,
                 "restart": true,
                 "sourceMaps": true,
                 "remoteRoot": "/app",
