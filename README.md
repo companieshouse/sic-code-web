@@ -95,3 +95,4 @@ CDN_HOST                                    | Path to CH Styling for this applic
 [TSLint](https://palantir.github.io/tslint/) is used to perform static analysis on code style.
 
   `npm run lint`
+
